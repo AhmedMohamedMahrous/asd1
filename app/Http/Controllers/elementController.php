@@ -75,7 +75,7 @@ class elementController extends Controller
         if(!auth()->check()){
             return redirect(route('login'));
         }
-        $carts = shopping_cart::where('user_id','=',auth()->user()->id)->get();
+        $carts = shopping_cart::where('user_id','=',auth()->user()->id)->where('ordered','=',1)->get();
         //return $carts;
         return view('shopping_cart',[
            'carts'  => $carts
@@ -98,15 +98,20 @@ class elementController extends Controller
         $order->save();
         foreach($carts as $cart){
             $cart->order_id = $order->id;
+            $cart->ordered = 0;
             $cart->save();
         }
+        /**
+         * should send the $order->shipping_id = time(); to the email of user
+         * to tracking 
+         */
         return redirect(route('home'));
     }
     public function checkout(){
         if(!auth()->check()){
             return redirect(route('login'));
         }
-        $carts = shopping_cart::where('user_id','=',auth()->user()->id)->get();
+        $carts = shopping_cart::where('user_id','=',auth()->user()->id)->where('ordered','=',1)->get();
 
         $total = 0;
         foreach($carts as $cart){

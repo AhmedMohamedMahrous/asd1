@@ -100,7 +100,7 @@
                         </div>
                         <div class="card_area">
                             <a class="main_btn" href="@if(Auth::check())
-                                                    {{route('addToCart',Auth::user()->id)}}
+                                                    {{route('addToCart',$product->id)}}
                                                 @else
                                                     {{route('login')}}
                                                 @endif">Add to Cart</a>
