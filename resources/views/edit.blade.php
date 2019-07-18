@@ -48,8 +48,8 @@
                         </style>
                         <h3>Update : {{$product->name}}</h3>
                         <form style="max-width: 690px;"
-                                class="row login_form" action="{{route('elements.update',$product->id)}}" method="post" id="contactForm" novalidate="novalidate">
-
+                                class="row login_form" action="/product/{{$product->id}}" method="post" id="contactForm" novalidate="novalidate">
+                            {{method_field('PATCH')}}
                             {{ csrf_field() }}
 
                             <!--<lable>UserName</lable><input name="name" class="form-control" type="text"><br>-->

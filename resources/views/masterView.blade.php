@@ -82,7 +82,7 @@
                                                  <a class="nav-link" href="{{route('tracking')}}">Tracking</a>
                                              </li>
                                              <li class="nav-item">
-                                                 <a class="nav-link" href="{{route('elements')}}">Admin Elements</a>
+                                                 <a class="nav-link" href="/product">Admin Elements</a>
                                              </li>
                                          @endif
                                      @endif

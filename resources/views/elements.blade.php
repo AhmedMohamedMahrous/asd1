@@ -53,8 +53,18 @@
                                         <div class="f_p_img">
                                             <img class="img-fluid" src="/product_images/{{$product->img}}" alt="">
                                             <div class="p_icon">
-
-                                                <a href="{{route('elements.edit',$product->id)}}"><i class="lnr lnr-warning"></i></a>
+                                                <form action="product/{{$product->id}}" method="post">
+                                                    {{method_field('DELETE')}}
+                                                    {{csrf_field()}}
+                                                    <button type="submit" style="padding: 0px;border: none;">
+                                                        <a  title="Delete">
+                                                            <i class="lnr lnr-drop"></i>
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                                <br>
+                                                <!--<a href="product/{{$product->id}}" title="Delete"><i class="lnr lnr-drop"></i></a>-->
+                                                <a href="product/{{$product->id}}/edit" title="Update"><i class="lnr lnr-warning"></i></a>
                                             </div>
                                         </div>
                                         <a href="/viewProduct/{{$product->id}}"><h4>{{$product->name}}</h4></a>

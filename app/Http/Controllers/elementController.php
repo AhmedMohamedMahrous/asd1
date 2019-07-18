@@ -103,7 +103,7 @@ class elementController extends Controller
         }
         /**
          * should send the $order->shipping_id = time(); to the email of user
-         * to tracking 
+         * to tracking
          */
         return redirect(route('home'));
     }

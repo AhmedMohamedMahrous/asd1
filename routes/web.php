@@ -59,3 +59,23 @@ Route::get('checkout','elementController@checkout')->name('checkout');
 Route::get('tracking','elementController@tracking')->name('tracking');
 Route::get('makeOrder','elementController@makeOrder')->name('makeOrder');
 Route::post('track','elementController@track')->name('track');
+
+Route::resource('product','ProductController');
+
+ // Create A resource Product
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
