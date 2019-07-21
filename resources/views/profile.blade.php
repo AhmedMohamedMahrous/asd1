@@ -13,18 +13,42 @@
 
                     </div>
                 </div>
-                <div class="" style="position: absolute; top:100px;right: 0;width:150px;height: 150px;background-color: #dddddd;
-                                             border-radius: 50%;">
-                    <img src="/storage/profile_images/{{$user->img}}" alt=""
-                    style="width: 100%;height: 100%; border-radius: 50%;">
+                <div style="position: absolute; top:100px;right: 0;width:150px;height: 150px;background-color: #dddddd;
+                border-radius: 50%; ">
+                    <div class="" >
+                        <img src="/storage/profile_images/{{$user->img}}" alt=""
+                             style="width: 100%;height: 100%; border-radius: 50%;" id="img">
+                    </div>
+                    <style>
+                        form{
+                            position: absolute;
+                            top: 68px;
+                            left: 14px;
+                            z-index: -1;
+                            opacity: 0;
+                        }
+                    </style>
+                    @if(Auth::check() &&Auth::user()->id === $user->id)
+                        <form action="{{route('addImageProfile',$user->id)}}" id="form" method="post" enctype="multipart/form-data">
+                            {{csrf_field()}}
+                            Select Image <input type="file" name="img" id="file">
+                            <input type="submit" value="Change">
+                        </form>
+                    @endif
+                    <script>
+                        var file = document.getElementById('file');
+                        var img = document.getElementById('img');
+                        img.onclick = function () {
+                            file.click();
+                        }
+                        file.onchange = function () {
+                            console.log(document.getElementById('form'));
+                            document.getElementById('form').submit();
+                        }
+                    </script>
                 </div>
-                @if(Auth::check() &&Auth::user()->id === $user->id)
-                <form action="{{route('addImageProfile',$user->id)}}" method="post" enctype="multipart/form-data">
-                    {{csrf_field()}}
-                    Select Image <input type="file" name="img">
-                    <input type="submit" value="Change">
-                </form>
-                @endif
+
+
             </div>
         </div>
     </section>
