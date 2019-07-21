@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="29e874c0-4571-450e-9e03-5f3b4f6b156a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="29e874c0-4571-450e-9e03-5f3b4f6b156a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,23 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://F:/openSource/JS/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
               <caret line="30" column="13" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/profile.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-              <folding>
-                <element signature="e#631#797#0#HTML" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -313,12 +298,12 @@
       <workItem from="1563653507861" duration="3803000" />
       <workItem from="1563702056752" duration="6445000" />
       <workItem from="1563734419999" duration="3070000" />
-      <workItem from="1563740879100" duration="2491000" />
+      <workItem from="1563740879100" duration="3093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133560000" />
+    <option name="totallyTimeSpent" value="134162000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -579,13 +564,6 @@
         <state relative-caret-position="-608" />
       </provider>
     </entry>
-    <entry file="file://F:/openSource/JS/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -593,6 +571,13 @@
           <folding>
             <element signature="e#631#797#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/openSource/JS/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="13" />
         </state>
       </provider>
     </entry>
