@@ -13,11 +13,11 @@
 
                     </div>
                 </div>
-                <div style="position: absolute; top:100px;right: 0;width:150px;height: 150px;background-color: #dddddd;
-                border-radius: 50%; ">
+                <div style="position: absolute; top:100px;right: 0;width:172px;height: 172px;
+                border-radius: 50%;">
                     <div class="" >
                         <img src="/storage/profile_images/{{$user->img}}" alt=""
-                             style="width: 100%;height: 100%; border-radius: 50%;" id="img">
+                             style="width: 168px;height: 168px; border-radius: 50%;  border: 4px solid #FFF;" id="img">
                     </div>
                     <style>
                         form{
@@ -26,6 +26,7 @@
                             left: 14px;
                             z-index: -1;
                             opacity: 0;
+                            display: none;
                         }
                     </style>
                     @if(Auth::check() &&Auth::user()->id === $user->id)
@@ -40,6 +41,13 @@
                         var img = document.getElementById('img');
                         img.onclick = function () {
                             file.click();
+                        }
+                        img.onmouseover = function(){
+                            img.style.cursor = "pointer";
+                            img.style.opacity = 0.5;
+                        }
+                        img.onmouseleave = function (){
+                            img.style.opacity = 1;
                         }
                         file.onchange = function () {
                             console.log(document.getElementById('form'));

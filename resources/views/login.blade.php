@@ -51,10 +51,12 @@
                         <form class="row login_form" action="/login/store" method="post" id="contactForm" novalidate="novalidate">
                             {{ csrf_field() }}
                             <div class="col-md-12 form-group">
-                                <input type="email" class="form-control" id="email" value="{{old('email')}}" name="email" placeholder="Username">
+                                <input type="email" class="form-control " id="email" value="{{old('email')}}" name="email" placeholder="Username"
+                                style="{{$errors->has('email')? "border-bottom: 1px solid #F00;" : ""}}" >
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="password" class="form-control" id="password" value="{{old('password')}}" name="password" placeholder="Password">
+                                <input type="password" class="form-control" id="password" value="{{old('password')}}" name="password" placeholder="Password"
+                                       style="{{$errors->has('password')? "border-bottom: 1px solid #F00;" : ""}}">
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
@@ -72,5 +74,33 @@
             </div>
         </div>
     </section>
+<script>
+    "use strict";
+    var email = document.getElementById('email') , pass = document.getElementById('password');
+    email.onblur = function (event)  {
+        if(email.value.length <= 0){
+            email.style.borderBottom = 1;
+            email.style.borderBottomColor = "#F00";
+            email.focus();
+        }
+        else{
+            email.style.borderBottom = 1;
+            email.style.borderBottomColor = "#cccccc";
+            pass.focus();
+        }
+    }
+    pass.onblur = function () {
+        if(pass.value.length < 6){
+            pass.style.borderBottom = 1;
+            pass.style.borderBottomColor = "#F00";
+            pass.focus();
+        }
+        else{
+            pass.style.borderBottom = 1;
+            pass.style.borderBottomColor = "#cccccc";
+            //pass.focus();
+        }
+    }
+</script>
     <!--================End Login Box Area =================-->
 @endsection
