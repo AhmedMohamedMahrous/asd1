@@ -64,5 +64,190 @@
 @endsection
 
 @section('body')
+  <!--================Category Product Area =================-->
+  <section class="cat_product_area p_120">
+    <div class="container">
+      <div class="row flex-row-reverse">
+        <div class="col-lg-9">
+          {{-- Title Par  --}}
+          <div class="product_top_bar" style="height:60px;">
 
+
+          </div>
+          <div class="latest_product_inner row" id="container">
+
+
+            {{--  --}}
+
+
+            <!--================Checkout Area =================-->
+            <section class="checkout_area p_120" style="padding-top:0px;margin:auto;" id='content'>
+              <div class="container">
+
+
+                <div class="billing_details">
+                  <h2 class="title" style="text-align:center;">My Orders</h2>
+                  <div class="row">
+                    @foreach ($user->order as  $order)
+
+
+                      <div class="col-lg-6" style="margin-bottom:50px;">
+                        <div class="order_box">
+                          <h2>Your Order : {{ $order->shipping_id }}</h2>
+                          <ul class="list">
+                            <li><a href="#">Product <span>Total</span></a></li>
+                            @foreach ($order->shopping as $cart)
+                              <?php
+                                //$product = App\product::where('id',$cart->product_id)->first();
+                                $cart = App\shopping_cart::find($cart->id);
+
+
+                              ?>
+                                <li><a href="#">{{($cart->product->name)}}
+                                  <span class="middle">x {{$cart->quantity}}</span>
+                                  <span class="last">${{$cart->product->price * $cart->quantity}}</span>
+                                </a></li>
+                            @endforeach
+
+                          </ul>
+                          <ul class="list list_2">
+                            <li><a href="#">Subtotal <span>${{$order->total_amount}}</span></a></li>
+                            <li><a href="#">Shipping <span>Flat rate: $00.00</span></a></li>
+                            <li><a href="#">Total <span>${{$order->total_amount}}</span></a></li>
+                          </ul>
+
+
+                          <div class="creat_account">
+                            <input type="checkbox" id="f-option4" name="selector">
+                            <label for="f-option4">I’ve read and accept the </label>
+                            <a href="#">terms & conditions*</a>
+                          </div>
+                          <a class="main_btn" href="#">Proceed to Paypal</a>
+                        </div>
+                      </div>
+                    @endforeach
+                    {{--  --}}
+
+
+                    {{--  --}}
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!--================End Checkout Area =================-->
+            <section class="checkout_area p_120" style="padding-top:0px;margin:auto;" id='content1'>
+              <div class="container">
+
+                ASD
+                <div class="billing_details">
+                  {{--  --}}
+                  <h2 class="title" style="text-align:center;">Shopping Carts</h2>
+                  <div class="latest_product_inner row">
+                    @foreach ($user->carts as $cart)
+
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="f_p_item">
+                                <div class="f_p_img">
+                                    <img class="img-fluid" src="/product_images/{{$cart->product_1->img}}" alt="">
+                                    <div class="p_icon">
+                                      <style>
+                                          .f_p_item .f_p_img .p_icon a.active {
+                                              color: #fff;
+                                              background: #c5322d;
+                                          }
+                                      </style>
+                                        <a ><i class="lnr lnr-heart"></i></a>
+                                        <a class="active"><i class="lnr lnr-cart"></i></a>
+                                    </div>
+                                </div>
+                                <a href="/viewProduct/{{$cart->product_1->id}}"><h4>{{$cart->product_1->name}}</h4></a>
+                                <h5>${{$cart->product_1->price}}</h5>
+                            </div>
+                        </div>
+                    @endforeach
+                  </div>
+                  {{--  --}}
+                </div>
+              </div>
+            </section>
+            <!--================End Checkout Area =================-->
+            {{--  --}}
+
+      </div>
+        </div>
+        {{-- left side in profile --}}
+        <div class="col-lg-3">
+          <div class="left_sidebar_area">
+            <aside class="left_widgets cat_widgets">
+              <div class="l_w_title">
+                <h3>Browse Categories</h3>
+              </div>
+              <div class="widgets_inner">
+                <ul class="list">
+                  <li><a href="#" id="order">My Orders</a></li>
+                  <li><a href="#" id="carts">Shopping Carts</a></li>
+                  <li><a href="#" id="item">Recommended Item</a></li>{{-- show Items User Review It  --}}
+                  <li><a href="{{ route('viewProfile',$user->id) }}">Account</a></li>
+                  {{--
+                  <li>
+                    <a href="#">Meat and Fish</a>
+
+                    <ul class="list">
+                      <li><a href="#">Frozen Fish</a></li>
+                      <li><a href="#">Dried Fish</a></li>
+                      <li><a href="#">Fresh Fish</a></li>
+                      <li><a href="#">Meat Alternatives</a></li>
+                      <li><a href="#">Meat</a></li>
+                    </ul>
+
+                  </li>
+                    --}}
+                    <script>
+                      "use strict";
+                        var order = document.getElementById('order');
+                        var carts = document.getElementById('carts');
+                        var item = document.getElementById('item');
+                        var container = document.getElementById('container');
+                        var content_order = document.getElementById('content');
+                        var content_carts = document.getElementById('content1');
+                        order.style.color = "#F00";
+                        content_carts.style.display = "none";
+                        order.onclick = function(){
+                            order.style.color = "#F00";
+                            carts.style.color = "#877bff";
+                            item.style.color = "#877bff";
+                            container.innerHTML = '<section class="checkout_area p_120" style="padding-top:0px;margin:auto;" id="content">'
+                                    +content_order.innerHTML+"</section>";
+                            content_carts.style.display = "none";
+                            //content_carts.style.display = "block";
+                        }
+                        carts.onclick = function(){
+                            content_carts.style.display = "block";
+                            order.style.color = "#877bff";
+                            carts.style.color = "#F00";
+                            item.style.color = "#877bff";
+                            container.innerHTML = '<section class="checkout_area p_120" style="padding-top:0px;margin:auto;" id="content1">'
+                                    +content_carts.innerHTML+"</section>";
+                            console.log(content_carts.innerHTML);
+                            content_order.style.display = "none";
+
+                        }
+                        item.onclick = function(){
+                            order.style.color = "#877bff";
+                            carts.style.color = "#877bff";
+                            item.style.color = "#F00";
+                            container.innerHTML = '<section class="checkout_area p_120" style="padding-top:0px;margin:auto;" id="content2">'
+                                    +"</section>";
+                        }
+                    </script>
+                </ul>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Category Product Area =================-->
 @endsection

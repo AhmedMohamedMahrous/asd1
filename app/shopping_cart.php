@@ -16,4 +16,7 @@ class shopping_cart extends Model
     public function order(){
         return $this->belongsTo('App\order','order_id','id');
     }
+    public function product_1(){
+        return $this->hasOne('App\product','id','product_id');
+    }
 }
