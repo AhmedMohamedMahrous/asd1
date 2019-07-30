@@ -64,6 +64,13 @@ Route::resource('product','ProductController');
 
  // Create A resource Product
 
+Route::get("/asd", function (){
+
+    return Request::ip();
+    return $this->server->get('REMOTE_ADDR');
+});
+
+
 
 
 

@@ -67,6 +67,7 @@ class Controller extends BaseController
         return view('login');
     }
     public function login(Request $r){
+        //dd(  $r->getClientIps());
         //return request("name");
         $this->validate($r,[
             'email' => 'required|email',
@@ -140,6 +141,9 @@ class Controller extends BaseController
     }
     public function viewProfile($id){
         $user = User::find($id);
+        if($user->id != auth()->user()->id){
+          return redirect(route("home"));
+        }
         return view('profile',[
             'user' => $user
         ]);
