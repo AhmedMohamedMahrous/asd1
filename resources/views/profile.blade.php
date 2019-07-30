@@ -181,13 +181,37 @@
                   <h2 class="title" style="text-align:center;">Recommended Items</h2>
                   <div class="row">
                     <?php
-                      $reviews = App\review::where('user_id','=',$user->id)->orderBy('rating')->get();
+                      $user = App\User::where('id','=',auth()->user()->id)->first();
                     ?>
-                    {{ $reviews }}
-                    <hr>
-                    @foreach ($reviews as $review)
-                        {{ $review->product }}
-                        <hr>
+
+                    @foreach($user->wishList as $item)
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="f_p_item">
+                                    <div class="f_p_img">
+                                        <img class="img-fluid" src="/product_images/{{$item->product->img}}" alt="">
+                                        <div class="p_icon">
+                                            <a href="@if(Auth::check()){{route('addWishList',$item->product->id)}}
+                                            @else{{route('login')}}
+                                            @endif" class="wishList">
+                                                <i class="lnr lnr-heart"></i>
+                                            </a>{{-- {{route('addWishList',$pro->id)}} --}}
+                                            <a href="@if(Auth::check()){{route('addToCart',Auth::user()->id)}}
+                                            @else{{route('login')}}
+                                            @endif">
+                                                <i class="lnr lnr-cart"></i></a>
+                                        </div>
+                                    </div>
+                                    <a href="/viewProduct/{{$item->product->id}}"><h4>{{$item->product->name}}</h4></a>
+                                    <h5>$
+                                        @if($item->product->discounted_price !=0)
+
+                                            {{$item->product->discounted_price}}
+                                        @else
+                                            {{$item->product->price}}
+                                        @endif
+                                    </h5>
+                                </div>
+                            </div>
                     @endforeach
                     {{--
                     <div class="latest_product_inner row">

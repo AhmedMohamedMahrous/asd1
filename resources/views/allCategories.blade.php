@@ -60,12 +60,18 @@
                                             <div class="f_p_img">
                                                 <img class="img-fluid" src="/product_images/{{$pro->img}}" alt="">
                                                 <div class="p_icon">
-                                                    <a href="#"><i class="lnr lnr-heart"></i></a>
+                                                    <a href="{{route('addWishList',$pro->id)}}"><i class="lnr lnr-heart"></i></a>
                                                     <a href="{{route('addToCart',$pro->id)}}"><i class="lnr lnr-cart"></i></a>
                                                 </div>
                                             </div>
                                             <a href="/viewProduct/{{$pro->id}}"><h4>{{$pro->name}}</h4></a>
-                                            <h5>${{$pro->price}}</h5>
+                                            <h5>$
+                                                @if($pro->discounted_price == 0)
+                                                    {{$pro->price}}
+                                                @else
+                                                    {{$pro->discounted_price}}
+                                                @endif
+                                            </h5>
                                         </div>
                                     </div>
                                 @endforeach

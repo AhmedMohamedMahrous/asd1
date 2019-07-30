@@ -44,8 +44,8 @@ use Illuminate\Support\Facades\DB;
                                         <div class="f_p_img">
                                             <img class="img-fluid" src="product_images\{{$pro->img}}" alt="">
                                             <div class="p_icon">
-                                                <a href="#"><i class="lnr lnr-heart"></i></a>
-                                                <a href="#"><i class="lnr lnr-cart"></i></a>
+                                                <a href="{{route('addWishList',$pro->id)}}"><i class="lnr lnr-heart"></i></a>
+                                                <a href="{{route('addToCart',$pro->id)}}"><i class="lnr lnr-cart"></i></a>
                                             </div>
                                         </div>
                                         <a href="/viewCategory/{{$item->id}}"><h4>{{$item->name}}</h4></a>
@@ -115,7 +115,7 @@ use Illuminate\Support\Facades\DB;
                                     <div class="f_p_img">
                                         <img class="img-fluid" src="product_images\{{$element->img}}" alt="">
                                         <div class="p_icon">
-                                            <a href="#"><i class="lnr lnr-heart"></i></a>
+                                            <a href="{{route('addWishList',$element->id)}}"><i class="lnr lnr-heart"></i></a>
                                             <a href="@if(Auth::check())
                                                         {{route('addToCart',Auth::user()->id)}}
                                                     @else
@@ -124,7 +124,13 @@ use Illuminate\Support\Facades\DB;
                                         </div>
                                     </div>
                                     <a href="viewProduct/{{$element->id}}"><h4>{{$element->name}}</h4></a>
-                                    <h5>${{$element->price}}</h5>
+                                    <h5>$
+                                        @if($element->discounted_price == 0)
+                                            {{$element->price}}
+                                        @else
+                                            {{$element->discounted_price}}
+                                        @endif
+                                    </h5>
                                 </div>
                             </div>
                         @endforeach

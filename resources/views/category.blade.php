@@ -64,7 +64,13 @@
                                 <div class="f_p_img">
                                     <img class="img-fluid" src="/product_images/{{$pro->img}}" alt="">
                                     <div class="p_icon">
-                                        <a href="#"><i class="lnr lnr-heart"></i></a>
+                                        <a href="@if(Auth::check())
+                                                    {{route('addWishList',$pro->id)}}
+                                                @else
+                                                    {{route('login')}}
+                                                @endif">
+                                            <i class="lnr lnr-heart"></i>
+                                        </a>{{-- {{route('addWishList',$pro->id)}} --}}
                                         <a href="@if(Auth::check())
                                                     {{route('addToCart',Auth::user()->id)}}
                                                 @else
@@ -74,7 +80,14 @@
                                     </div>
                                 </div>
                                 <a href="/viewProduct/{{$pro->id}}"><h4>{{$pro->name}}</h4></a>
-                                <h5>${{$pro->price}}</h5>
+                                <h5>$
+                                    @if($pro->discounted_price !=0)
+
+                                        {{$pro->discounted_price}}
+                                    @else
+                                        {{$pro->price}}
+                                    @endif
+                                </h5>
                             </div>
                         </div>
                         @endforeach

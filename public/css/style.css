@@ -3802,8 +3802,12 @@ h6 {
   line-height: 40px;
   color: #222222;
   margin-bottom: 5px;
-}
 
+}
+.f_p_item .f_p_img .p_icon a.wishList{
+  color: #fff;
+  background: #c5322d;
+}
 .f_p_item .f_p_img .p_icon a:last-child {
   margin-bottom: 0px;
 }

@@ -13,4 +13,7 @@ class product extends Model
     public function review(){
         return $this->hasMany('App\review');
     }
+    public function wighList(){
+        return $this->hasMany('App\wishList','product_id','id');
+    }
 }
